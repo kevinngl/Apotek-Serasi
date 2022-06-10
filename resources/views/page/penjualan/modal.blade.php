@@ -35,14 +35,24 @@
         </div>
         <!--end::Heading-->
         <!--begin::Input group-->
-        <div class="mb-10">
+        {{-- Harusnya Pake yang ini --}}
+        {{-- <div class="mb-10">
             <label class="form-label fs-6 fw-bold">Nama Obat:</label>
-            <select name="jenis_id" class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
+            <select name="obat_id" class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
                 <option>Pilih</option>
-                {{-- @foreach($obat as $item)
-                <option value="{{$item->jenis_id}}"{{$item->jenis_id==$jenis_obat->id?"selected":""}}>{{$item->name}}</option>
-                @endforeach --}}
+                @foreach($penjualan as $item)
+                <option value="{{$item->obat_id}}"{{$item->obat_id==$obat->id?"selected":""}}>{{$item->name}}</option>
+                @endforeach
             </select>
+        </div> --}}
+        <div class="d-flex flex-column mb-8 fv-row">
+            <!--begin::Label-->
+            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
+                <span class="required">Nama Obat</span>
+                
+            </label>
+            <!--end::Label-->
+            <input type="text" class="form-control form-control-solid" placeholder="Nama Obat" name="obat_id" value="{{$penjualan->obat_id}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
@@ -53,7 +63,7 @@
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="kuantitas" id="judul_literatur" value="{{$penjualan->kuantitas}}" />
+            <input type="text" class="form-control form-control-solid" placeholder="Kuantitas" name="kuantitas" value="{{$penjualan->kuantitas}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
@@ -64,7 +74,7 @@
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="total_harga" id="judul_literatur" value="{{$penjualan->total_harga}}" />
+            <input type="text" class="form-control form-control-solid" placeholder="Total Harga" name="total_harga" value="{{$penjualan->total_harga}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->

@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('obat', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->default(0);
+            $table->string('user_id');
             $table->string('nama');
             $table->integer('harga');
-            $table->integer('jenis_id')->default(0);
+            $table->string('jenis_id');
             $table->string('stok')->default(0);
             $table->enum('status',['diterima','ditolak']);
             $table->date('expired');

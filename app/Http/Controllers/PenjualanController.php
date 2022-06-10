@@ -40,7 +40,7 @@ class PenjualanController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required',
+            'obat_id' => 'required',
             'kuantitas' => 'required',
             'total_harga' => 'required',
             'expired' => 'required',
@@ -49,10 +49,10 @@ class PenjualanController extends Controller
         ]);
         if ($validator->fails()) {
             $errors = $validator->errors();
-            if ($errors->has('nama')) {
+            if ($errors->has('obat_id')) {
                 return response()->json([
                     'alert' => 'error',
-                    'message' => $errors->first('nama'),
+                    'message' => $errors->first('obat_id'),
                 ]);
             }elseif($errors->has('kuantitas')){
                 return response()->json([
@@ -83,7 +83,7 @@ class PenjualanController extends Controller
         }
         $penjualan = new Penjualan;
         $penjualan->user_id = 1;
-        $penjualan->nama = $request->nama;
+        $penjualan->obat_id = $request->obat_id;
         $penjualan->kuantitas = $request->kuantitas;
         $penjualan->total_harga = $request->total_harga;
         $penjualan->expired = $request->expired;
@@ -128,7 +128,7 @@ class PenjualanController extends Controller
     public function update(Request $request, Penjualan $penjualan)
     {
         $validator = Validator::make($request->all(), [
-            'nama',
+            'obat_id',
             'kuantitas',
             'total_harga',
             'expired',
@@ -137,10 +137,10 @@ class PenjualanController extends Controller
         ]);
         if ($validator->fails()) {
             $errors = $validator->errors();
-            if ($errors->has('nama')) {
+            if ($errors->has('obat_id')) {
                 return response()->json([
                     'alert' => 'error',
-                    'message' => $errors->first('nama'),
+                    'message' => $errors->first('obat_id'),
                 ]);
             }elseif($errors->has('kuantitas')){
                 return response()->json([
@@ -169,7 +169,7 @@ class PenjualanController extends Controller
                 ]);
             }
         }
-        $penjualan->nama = $request->nama;
+        $penjualan->obat_id = $request->obat_id;
         $penjualan->kuantitas = $request->kuantitas;
         $penjualan->total_harga = $request->total_harga;
         $penjualan->expired = $request->expired;
@@ -178,7 +178,7 @@ class PenjualanController extends Controller
         $penjualan->update();
         return response()->json([
             'alert' => 'success',
-            'message' => 'Penjualan '. $request->nama . ' diperbaharui',
+            'message' => 'Penjualan '. $request->obat_id . ' diperbaharui',
         ]);
     }
 

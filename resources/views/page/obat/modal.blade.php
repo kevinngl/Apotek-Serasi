@@ -42,7 +42,7 @@
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Nama" name="nama" id="judul_obat" value="{{$obat->nama}}" />
+            <input type="text" class="form-control form-control-solid" placeholder="Nama" name="nama" value="{{$obat->nama}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
@@ -53,18 +53,29 @@
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="harga" id="judul_obat" value="{{$obat->harga}}" />
+            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="harga" value="{{$obat->harga}}" />
         </div>
         <!--end::Input group-->
+
         <!--begin::Input group-->
-        <div class="mb-10">
+        {{-- HARUSNYA PAKE YANG INI --}}
+        {{-- <div class="mb-10">
             <label class="form-label fs-6 fw-bold">Jenis:</label>
             <select name="jenis_id" class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
                 <option>Pilih</option>
-                {{-- @foreach($obat as $item)
+                @foreach($obat as $item)
                 <option value="{{$item->jenis_id}}"{{$item->jenis_id==$jenis_obat->id?"selected":""}}>{{$item->name}}</option>
-                @endforeach --}}
+                @endforeach
             </select>
+        </div> --}}
+        <div class="d-flex flex-column mb-8 fv-row">
+            <!--begin::Label-->
+            <label for="judul_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
+                <span class="required">Jenis</span>
+                
+            </label>
+            <!--end::Label-->
+            <input type="text" class="form-control form-control-solid" placeholder="Jenis" name="jenis_id" value="{{$obat->jenis_id}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
@@ -75,7 +86,7 @@
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Stok" name="stok" id="judul_obat" value="{{$obat->stok}}" />
+            <input type="text" class="form-control form-control-solid" placeholder="Stok" name="stok" value="{{$obat->stok}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
