@@ -37,78 +37,76 @@
         <!--begin::Input group-->
         <div class="d-flex flex-column mb-8 fv-row">
             <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
+            <label for="judul_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Nama</span>
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Nama" name="judul" id="judul_literatur" value="" />
+            <input type="text" class="form-control form-control-solid" placeholder="Nama" name="nama" id="judul_obat" value="{{$obat->nama}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
         <div class="d-flex flex-column mb-8 fv-row">
             <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
+            <label for="judul_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Harga</span>
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="judul" id="judul_literatur" value="" />
+            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="harga" id="judul_obat" value="{{$obat->harga}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
         <div class="mb-10">
             <label class="form-label fs-6 fw-bold">Jenis:</label>
-            <select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
+            <select name="jenis_id" class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
                 <option>Pilih</option>
-                <option value="Administrator">Admin</option>
-                <option value="Analyst">Dosen</option>
-                <option value="Developer">Siswa</option>
+                {{-- @foreach($obat as $item)
+                <option value="{{$item->jenis_id}}"{{$item->jenis_id==$jenis_obat->id?"selected":""}}>{{$item->name}}</option>
+                @endforeach --}}
             </select>
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
         <div class="d-flex flex-column mb-8 fv-row">
             <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
+            <label for="judul_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Stok</span>
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Stok" name="judul" id="judul_literatur" value="" />
+            <input type="text" class="form-control form-control-solid" placeholder="Stok" name="stok" id="judul_obat" value="{{$obat->stok}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
         <div class="d-flex flex-column mb-8 fv-row">
             <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
-                <span class="required">Tanggal Kadaluarsa</span>
+            <label for="judul_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
+                <span class="required">Expired</span>
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control" id="date" name="date" placeholder="Masukkan Tanggal..." value="">
+            <input type="date" class="form-control" id="date" name="expired" placeholder="Masukkan Tanggal..." value="{{$obat->expired}}">
         </div>
+        
         <!--end::Input group-->
         <!--begin::Actions-->
         <div class="text-center pt-15">
-            {{-- @if ($literatur->id) --}}
-            <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','','#ModalCreateLiteratur','POST');" class="btn btn-primary">
+            @if ($obat->id)
+            <button id="tombol_kirim_obat" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('obat.update',$obat->id)}}','#ModalCreateLiteratur','POST');" class="btn btn-primary">
                 Submit
             </button>
-            {{-- @else --}}
-            {{-- <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('literatur.store')}}','#ModalCreateLiteratur','POST');" class="btn btn-primary"> --}}
-                {{-- Submit --}}
+            @else
+            <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('obat.store')}}','#ModalCreateLiteratur','POST');" class="btn btn-primary">
+                Submit
             </button>
-            {{-- @endif --}}
+            @endif
         </div>
         <!--end::Actions-->
     </form>
     <!--end:Form-->
 </div>
 <!--end::Modal body-->
-
-
-
 
 <script>
     var loadFile = function(event) {

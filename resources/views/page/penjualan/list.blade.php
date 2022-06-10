@@ -48,10 +48,10 @@
                         </button>
                         <div class="dropdown-menu menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" aria-labelledby="aksi">
                             <div class="menu-item px-3">
-                                <a href="javascript:;" onclick="handle_open_modal('','#ModalCreateLiteratur','#contentLiteraturModal');" class="menu-link px-3">Edit</a>
+                                <a href="javascript:;" onclick="handle_open_modal('{{route('penjualan.edit',$item->id)}}','#ModalCreateLiteratur','#contentLiteraturModal');" class="menu-link px-3">Edit</a>
                             </div>
                             <div class="menu-item px-3">
-                                <a href="javascript:;" onclick="handle_confirm('Apakah Anda Yakin?','Yakin','Tidak','DELETE','');" class="menu-link px-3">Delete</a>
+                                <a href="javascript:;" onclick="handle_confirm('Apakah Anda Yakin?','Yakin','Tidak','DELETE','{{route('penjualan.destroy',$item->id)}}');" class="menu-link px-3">Delete</a>
                             </div>
                         </div>
                     </div>

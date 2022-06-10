@@ -43,7 +43,7 @@ class OfficeController extends Controller
     public function penjualan(Request $request)
     {
         if($request->ajax()) {
-            $penjualan = penjualan::paginate(10);
+            $penjualan = Penjualan::paginate(10);
             return view('page.penjualan.list', compact('penjualan'));
         }
         return view('page.penjualan.main');

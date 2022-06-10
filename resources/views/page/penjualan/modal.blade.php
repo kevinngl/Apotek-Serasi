@@ -35,14 +35,14 @@
         </div>
         <!--end::Heading-->
         <!--begin::Input group-->
-        <div class="d-flex flex-column mb-8 fv-row">
-            <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
-                <span class="required">Nama Obat</span>
-                
-            </label>
-            <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Nama" name="judul" id="judul_literatur" value="" />
+        <div class="mb-10">
+            <label class="form-label fs-6 fw-bold">Nama Obat:</label>
+            <select name="jenis_id" class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
+                <option>Pilih</option>
+                {{-- @foreach($obat as $item)
+                <option value="{{$item->jenis_id}}"{{$item->jenis_id==$jenis_obat->id?"selected":""}}>{{$item->name}}</option>
+                @endforeach --}}
+            </select>
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
@@ -53,7 +53,7 @@
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="judul" id="judul_literatur" value="" />
+            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="kuantitas" id="judul_literatur" value="{{$penjualan->kuantitas}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
@@ -64,7 +64,7 @@
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="judul" id="judul_literatur" value="" />
+            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="total_harga" id="judul_literatur" value="{{$penjualan->total_harga}}" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
@@ -75,42 +75,42 @@
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control" id="date" name="date" placeholder="Masukkan Tanggal..." value="">
+            <input type="date" class="form-control" id="date" name="expired" placeholder="Masukkan Tanggal..." value="{{$penjualan->expired}}">
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
         <div class="d-flex flex-column mb-8 fv-row">
             <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
+            <label for="judul_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Tanggal Pembayaran</span>
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control" id="date" name="date" placeholder="Masukkan Tanggal..." value="">
+            <input type="date" class="form-control" id="date" name="tanggal_pembayaran" placeholder="Masukkan Tanggal..." value="{{$penjualan->tanggal_pembayaran}}">
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
         <div class="mb-10">
             <label class="form-label fs-6 fw-bold">Status:</label>
-            <select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
+            <select name="status" class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
                 <option>Pilih</option>
-                <option value="Administrator">Diterima</option>
-                <option value="Analyst">Ditolak</option>
+                <option value="diterima">Diterima</option>
+                <option value="ditolak">Ditolak</option>
             </select>
         </div>
         <!--end::Input group-->
         
         <!--begin::Actions-->
         <div class="text-center pt-15">
-            {{-- @if ($literatur->id) --}}
-            <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','','#ModalCreateLiteratur','POST');" class="btn btn-primary">
+            @if ($penjualan->id)
+            <button id="tombol_kirim_obat" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('penjualan.update',$penjualan->id)}}','#ModalCreateLiteratur','POST');" class="btn btn-primary">
                 Submit
             </button>
-            {{-- @else --}}
-            {{-- <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('literatur.store')}}','#ModalCreateLiteratur','POST');" class="btn btn-primary"> --}}
-                {{-- Submit --}}
+            @else
+            <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('penjualan.store')}}','#ModalCreateLiteratur','POST');" class="btn btn-primary">
+                Submit
             </button>
-            {{-- @endif --}}
+            @endif
         </div>
         <!--end::Actions-->
     </form>

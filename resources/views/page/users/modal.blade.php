@@ -23,7 +23,7 @@
 <!--begin::Modal body-->
 <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
     <!--begin:Form-->
-    <form id="form_create_literatur">
+    <form id="form_create_obat">
         <!--begin::Heading-->
         <div class="mb-13 text-center">
             <!--begin::Title-->
@@ -37,34 +37,34 @@
         <!--begin::Input group-->
         <div class="d-flex flex-column mb-8 fv-row">
             <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
+            <label for="judul_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Nama</span>
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Nama" name="judul" id="judul_literatur" value="" />
+            <input type="text" class="form-control form-control-solid" placeholder="Nama" name="judul" id="judul_obat" value="" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
         <div class="d-flex flex-column mb-8 fv-row">
             <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
+            <label for="judul_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Email</span>
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="judul" id="judul_literatur" value="" />
+            <input type="text" class="form-control form-control-solid" placeholder="Email" name="judul" id="judul_obat" value="" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
         <div class="d-flex flex-column mb-8 fv-row">
             <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
+            <label for="judul_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">No.Telepon</span>
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Harga" name="judul" id="judul_literatur" value="" />
+            <input type="text" class="form-control form-control-solid" placeholder="No.telepon" name="judul" id="judul_obat" value="" />
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->
@@ -81,12 +81,12 @@
         
         <!--begin::Actions-->
         <div class="text-center pt-15">
-            {{-- @if ($literatur->id) --}}
-            <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','','#ModalCreateLiteratur','POST');" class="btn btn-primary">
+            {{-- @if ($obat->id) --}}
+            <button id="tombol_kirim_obat" onclick="upload_form_modal('#tombol_kirim_Literatur','#form_create_Literatur','','#ModalCreateLiteratur','POST');" class="btn btn-primary">
                 Submit
             </button>
             {{-- @else --}}
-            {{-- <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('literatur.store')}}','#ModalCreateLiteratur','POST');" class="btn btn-primary"> --}}
+            {{-- <button id="tombol_kirim_obat" onclick="upload_form_modal('#tombol_kirim_obat','#form_create_obat','{{route('obat.store')}}','#ModalCreateobat','POST');" class="btn btn-primary"> --}}
                 {{-- Submit --}}
             </button>
             {{-- @endif --}}

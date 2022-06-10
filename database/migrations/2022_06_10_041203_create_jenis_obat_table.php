@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('jenis_obat', function (Blueprint $table) {
             $table->id();
             $table->string('jenis');
+            $table->enum('status',['diterima','ditolak']);
             $table->timestamps();
         });
     }

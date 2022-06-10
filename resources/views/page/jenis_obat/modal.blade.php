@@ -27,7 +27,7 @@
         <!--begin::Heading-->
         <div class="mb-13 text-center">
             <!--begin::Title-->
-            <h1 class="mb-3">Add Jenis Obat</h1>
+            <h1 class="mb-3">Add Obat</h1>
             <!--end::Title-->
             <!--begin::Description-->
 
@@ -37,34 +37,41 @@
         <!--begin::Input group-->
         <div class="d-flex flex-column mb-8 fv-row">
             <!--begin::Label-->
-            <label for="judul_literatur" class="d-flex align-items-center fs-6 fw-bold mb-2">
+            <label for="judul_jenis_obat" class="d-flex align-items-center fs-6 fw-bold mb-2">
                 <span class="required">Nama Jenis Obat</span>
                 
             </label>
             <!--end::Label-->
-            <input type="text" class="form-control form-control-solid" placeholder="Nama" name="jenis" id="judul_literatur" value="" />
+            <input type="text" class="form-control form-control-solid" placeholder="Nama" name="jenis" id="judul_jenis_obat" value="{{$jenis_obat->jenis}}" />
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="mb-10">
+            <label class="form-label fs-6 fw-bold">Status:</label>
+            <select name="status" class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
+                <option value="{{$jenis_obat->status}}">Pilih</option>
+                <option value="1">diterima</option>
+                <option value="2">ditolak</option>
+            </select>
         </div>
         <!--end::Input group-->
         <!--begin::Actions-->
         <div class="text-center pt-15">
-            {{-- @if ($literatur->id) --}}
-            <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','','#ModalCreateLiteratur','POST');" class="btn btn-primary">
+            @if ($jenis_obat->id)
+            <button id="tombol_kirim_jenis_obat" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('jenis_obat.update',$jenis_obat->id)}}','#ModalCreateLiteratur','POST');" class="btn btn-primary">
                 Submit
             </button>
-            {{-- @else --}}
-            {{-- <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('literatur.store')}}','#ModalCreateLiteratur','POST');" class="btn btn-primary"> --}}
-                {{-- Submit --}}
+            @else
+            <button id="tombol_kirim_literatur" onclick="upload_form_modal('#tombol_kirim_literatur','#form_create_literatur','{{route('jenis_obat.store')}}','#ModalCreateLiteratur','POST');" class="btn btn-primary">
+                Submit
             </button>
-            {{-- @endif --}}
+            @endif
         </div>
         <!--end::Actions-->
     </form>
     <!--end:Form-->
 </div>
 <!--end::Modal body-->
-
-
-
 
 <script>
     var loadFile = function(event) {

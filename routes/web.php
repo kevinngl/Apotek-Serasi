@@ -32,17 +32,27 @@ Route::get('jenis_obat',[OfficeController::class, 'jenis_obat'])->name('jenis_ob
 
 // Obat Controllers
 Route::get('obat/create',[ObatController::class, 'create'])->name('obat.create');
-Route::get('obat/edit',[ObatController::class, 'edit'])->name('obat.edit');
-Route::get('obat/delete',[ObatController::class, 'destroy'])->name('obat.delete');
+Route::get('obat/{obat}/edit',[ObatController::class, 'edit'])->name('obat.edit');
+Route::post('obat/store',[ObatController::class, 'store'])->name('obat.store');
+Route::post('obat/{obat}/update',[ObatController::class, 'update'])->name('obat.update');
+Route::delete('obat/{obat}/destroy',[ObatController::class, 'destroy'])->name('obat.destroy');
 
 // Jenis Obat Controllers
 Route::get('jenis_obat/create',[JenisObatController::class, 'create'])->name('jenis_obat.create');
-Route::get('jenis_obat/edit',[JenisObatController::class, 'edit'])->name('jenis_obat.edit');
+Route::get('jenis_obat/{jenis_obat}/edit',[JenisObatController::class, 'edit'])->name('jenis_obat.edit');
+Route::post('jenis_obat/store',[JenisObatController::class, 'store'])->name('jenis_obat.store');
+Route::post('jenis_obat/{jenis_obat}/update',[JenisObatController::class, 'update'])->name('jenis_obat.update');
+Route::delete('jenis_obat/{jenis_obat}/destroy',[JenisObatController::class, 'destroy'])->name('jenis_obat.destroy');
 
 // Penjualan Controllers
 Route::get('penjualan/create',[PenjualanController::class, 'create'])->name('penjualan.create');
-Route::get('penjualan/edit',[penjualanController::class, 'edit'])->name('penjualan.edit');
-
+Route::get('penjualan/{penjualan}/edit',[PenjualanController::class, 'edit'])->name('penjualan.edit');
+Route::post('penjualan/store',[PenjualanController::class, 'store'])->name('penjualan.store');
+Route::post('penjualan/{penjualan}/update',[PenjualanController::class, 'update'])->name('penjualan.update');
+Route::delete('penjualan/{penjualan}/destroy',[PenjualanController::class, 'destroy'])->name('penjualan.destroy');
 // Users Controllers
 Route::get('users/create',[UsersController::class, 'create'])->name('users.create');
-Route::get('users/edit',[UsersController::class, 'edit'])->name('users.edit');
+Route::get('users/{users}/edit',[UsersController::class, 'edit'])->name('users.edit');
+Route::post('users/store',[UsersController::class, 'store'])->name('users.store');
+Route::post('users/{users}/update',[UsersController::class, 'update'])->name('users.update');
+Route::delete('users/{users}/destroy',[UsersController::class, 'destroy'])->name('users.destroy');

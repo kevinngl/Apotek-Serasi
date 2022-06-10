@@ -1,5 +1,5 @@
     <!--begin::Table-->
-    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_literatur">
+    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_obat">
         <!--begin::Table head-->
         <thead>
             <!--begin::Table row-->
@@ -10,8 +10,8 @@
                     </div>
                 </th>
                 <th class="min-w-125px">Nama Jenis Obat</th>
-                <th class="min-w-125px">Action</th>
-         
+                <th class="min-w-125px">Status</th>
+                <th class="min-w-125px">Actions</th>
             </tr>
             <!--end::Table row-->
         </thead>
@@ -27,6 +27,7 @@
                     </div>
                 </td>
                 <td>{{$item->jenis}}</td>
+                <td>{{$item->status}}</td>
                 <td class="text">
                     <div class="btn-group" role="group">
                         <button id="aksi" type="button" class="btn btn-sm btn-light btn-active-light-primary" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,10 +40,10 @@
                         </button>
                         <div class="dropdown-menu menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" aria-labelledby="aksi">
                             <div class="menu-item px-3">
-                                <a href="javascript:;" onclick="handle_open_modal('','#ModalCreateLiteratur','#contentLiteraturModal');" class="menu-link px-3">Edit</a>
+                                <a href="javascript:;" onclick="handle_open_modal('{{route('jenis_obat.edit',$item->id)}}','#ModalCreateLiteratur','#contentLiteraturModal');" class="menu-link px-3">Edit</a>
                             </div>
                             <div class="menu-item px-3">
-                                <a href="javascript:;" onclick="handle_confirm('Apakah Anda Yakin?','Yakin','Tidak','DELETE','');" class="menu-link px-3">Delete</a>
+                                <a href="javascript:;" onclick="handle_confirm('Apakah Anda Yakin?','Yakin','Tidak','DELETE','{{route('jenis_obat.destroy',$item->id)}}');" class="menu-link px-3">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -55,4 +56,4 @@
         <!--end::Table body-->
     </table>
     <!--end::Table-->
-{{-- {{$literatur->links()}} --}}
+{{-- {{$obat->links()}} --}}

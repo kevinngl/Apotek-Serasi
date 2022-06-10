@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('table_obat', function (Blueprint $table) {
+        Schema::create('obat', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->default(0);
             $table->string('nama');
             $table->integer('harga');
             $table->integer('jenis_id')->default(0);
             $table->string('stok')->default(0);
+            $table->enum('status',['diterima','ditolak']);
             $table->date('expired');
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_obat');
+        Schema::dropIfExists('obat');
     }
 };

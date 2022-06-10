@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\JenisObat;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 class JenisObatController extends Controller
 {
@@ -35,7 +38,32 @@ class JenisObatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'jenis' => 'required',
+            'status' => 'required',
+        ]);
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            if ($errors->has('jenis')) {
+                return response()->json([
+                    'alert' => 'error',
+                    'message' => $errors->first('jenis'),
+                ]);
+            }elseif($errors->has('status')){
+                return response()->json([
+                    'alert' => 'error',
+                    'message' => $errors->first('status'),
+                ]);
+            }
+        }
+        $jenis_obat = new JenisObat;
+        $jenis_obat->jenis = $request->jenis;
+        $jenis_obat->status = $request->status;
+        $jenis_obat->save();
+        return response()->json([
+            'alert' => 'success',
+            'message' => 'Jenis Obat tersimpan',
+        ]);
     }
 
     /**
@@ -55,9 +83,9 @@ class JenisObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(JenisObat $jenis_obat)
     {
-        //
+        return view('page.jenis_obat.modal', ['jenis_obat' => $jenis_obat]);
     }
 
     /**
@@ -67,9 +95,34 @@ class JenisObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, JenisObat $jenis_obat)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'jenis' => 'required',
+            'status' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            if ($errors->has('jenis')) {
+                return response()->json([
+                    'alert' => 'error',
+                    'message' => $errors->first('jenis'),
+                ]);
+            }elseif($errors->has('status')){
+                return response()->json([
+                    'alert' => 'error',
+                    'message' => $errors->first('status'),
+                ]);
+            }
+        }
+        $jenis_obat->jenis = $request->jenis;
+        $jenis_obat->status = $request->status;
+        $jenis_obat->update();
+        return response()->json([
+            'alert' => 'success',
+            'message' => 'Jenis Obat '. $request->nama . ' diperbaharui',
+        ]);
     }
 
     /**
@@ -78,8 +131,12 @@ class JenisObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(JenisObat $jenis_obat)
     {
-        //
+        $jenis_obat->delete();
+        return response()->json([
+            'alert' => 'success',
+            'message' => 'Jenis Obat terhapus',
+        ]);
     }
 }

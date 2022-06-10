@@ -1,5 +1,5 @@
     <!--begin::Table-->
-    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_literatur">
+    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_obat">
         <!--begin::Table head-->
         <thead>
             <!--begin::Table row-->
@@ -63,4 +63,4 @@
         <!--end::Table body-->
     </table>
     <!--end::Table-->
-{{-- {{$literatur->links()}} --}}
+{{-- {{$obat->links()}} --}}
